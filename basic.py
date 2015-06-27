@@ -31,6 +31,22 @@ class BaiduBasic(object):
             params={
                 'ak': self.__ak,
                 'location': location,
+                'output': 'json',
+            }
+        )
+
+    def hot_movie(self, location):
+        """
+        获取热映影片
+        """
+        self._check_ak()
+        return self._post(
+            url="http://api.map.baidu.com/telematics/v3/movie",
+            params={
+                'location': location,
+                'qt': 'hot_movie',
+                'ak': self.__ak,
+                'output': 'json',
             }
         )
 
