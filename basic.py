@@ -7,6 +7,8 @@ from __future__ import print_function, unicode_literals
 import requests
 import json
 
+from .exceptions import OfficialAPIError
+
 
 class BaiduBasic(object):
     """
@@ -94,6 +96,6 @@ class BaiduBasic(object):
         检测官方错误
         """
         if "error" in json_data and json_data["error"] != 0:
-            raise EOFError(
+            raise OfficialAPIError(
                 "{}: {}".format(json_data["error"], json_data["status"])
             )
